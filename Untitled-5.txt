@@ -1,0 +1,50 @@
+class UserMainCode():
+    def userIdGeneration(self, input1, input2, input3, input4):
+
+        
+        first_name = input1.strip()
+        last_name = input2.strip()
+        pin = str(input3)
+        N = input4
+
+        smaller_name, longer_name = None, None
+        
+        if len(first_name.lower()) < len(last_name.lower()):
+
+            smaller_name = first_name
+            longer_name = last_name
+
+        elif len(first_name.lower()) > len(last_name.lower()):
+            smaller_name = last_name
+            longer_name = first_name
+
+        else:
+            if first_name.lower() < last_name.lower():  
+                smaller_name = first_name
+                longer_name = last_name
+            else:
+                smaller_name = last_name
+                longer_name = first_name
+
+        # Step 2
+        left_digit = pin[N-1]  
+        right_digit = pin[len(pin)-N]  
+        
+        user_id = longer_name[0] + smaller_name + left_digit + right_digit
+
+        # Step 3
+
+        result = ""
+        for char in user_id:
+            if char.isupper():
+                result += char.lower()
+            elif char.islower():
+                result += char.upper()
+            else:
+                result += char  
+        
+        return result
+ans = UserMainCode()
+print(ans.userIdGeneration("AdMin", "Admin", 123456, 3))
+print(ans.userIdGeneration("User", "user", 123456, 2))
+print(ans.userIdGeneration("hello", "world", 123456, 4))

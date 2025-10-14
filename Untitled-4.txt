@@ -1,0 +1,27 @@
+
+class UserMainCode(object):
+    @classmethod
+    def fixTheFormula(cls, input1):
+
+        digit = []
+        symbol = []
+
+        for i in input1.strip():
+            if i.isdigit():
+                digit.append(i)
+            elif i in "+-*/":
+                symbol.append(i)
+        
+        result = int(digit[0])
+        
+        for i in range(len(symbol)):
+            if symbol[i] == '+':
+                result += int(digit[i + 1])
+            elif symbol[i] == '-':
+                result -= int(digit[i + 1])
+            elif symbol[i] == '*':
+                result *= int(digit[i + 1])
+            elif symbol[i] == '/':
+                result //= int(digit[i + 1])  
+        
+        return result

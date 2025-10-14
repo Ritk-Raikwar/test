@@ -1,0 +1,12 @@
+
+input1 = input().strip()
+
+class Solution:
+
+    def abbreviate(self, word: str) -> str:
+        if len(word) <= 10:
+            return word             
+        return word[0] + str(len(word) - 2) + word[-1]
+
+ans = Solution().abbreviate(input1)
+print(ans)
